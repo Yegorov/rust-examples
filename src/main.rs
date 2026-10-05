@@ -1,7 +1,10 @@
+mod http;
+
 fn main() {
     println!("Hello, world!");
     println!("{}", welcome("Artem"));
-    println!("{}", welcome(&String::from("Rust")))
+    println!("{}", welcome(&String::from("Rust")));
+    println!("body: {}", http::get_body());
 }
 
 fn welcome(user: &str) -> String {
