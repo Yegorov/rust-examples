@@ -26,3 +26,15 @@ pub fn get_body() -> String {
     stream.read_to_string(&mut buf).unwrap();
     buf
 }
+
+pub fn get_ip() {
+    println!(
+        "{:?}",
+        "ya.ru:80"
+            .to_socket_addrs()
+            .unwrap()
+            .into_iter()
+            .map(|x| { x.ip() })
+            .collect::<Vec<_>>()
+    );
+}

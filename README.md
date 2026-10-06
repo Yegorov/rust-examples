@@ -38,3 +38,10 @@ cargo add ..
 cargo remove ..
 cargo tree
 ```
+
+* [Package Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html#package-layout)
+
+
+## Links
+* [Learn Rust](https://rust-lang.org/learn/)
+* [Rust Developer](https://roadmap.sh/rust)

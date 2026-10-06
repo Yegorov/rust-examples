@@ -1,10 +1,15 @@
+use std::time;
+
 mod http;
 
 fn main() {
     println!("Hello, world!");
     println!("{}", welcome("Artem"));
     println!("{}", welcome(&String::from("Rust")));
+    http::get_ip();
+    let t = time::SystemTime::now();
     println!("body: {}", http::get_body());
+    println!("duration ms: {}", t.elapsed().unwrap().as_millis());
 }
 
 fn welcome(user: &str) -> String {
