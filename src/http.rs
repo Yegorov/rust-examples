@@ -1,10 +1,18 @@
 use std::{
     io::{Read, Write},
-    net::TcpStream,
+    net::{TcpStream, ToSocketAddrs},
+    time::Duration,
 };
 
 pub fn get_body() -> String {
-    let mut stream = TcpStream::connect("example.com:80").unwrap();
+    let timeout = Duration::from_secs(5);
+    let mut stream = TcpStream::connect_timeout(
+        &"example.com:80".to_socket_addrs().unwrap().next().unwrap(),
+        timeout,
+    )
+    .unwrap();
+    stream.set_read_timeout(Some(timeout)).unwrap();
+    stream.set_write_timeout(Some(timeout)).unwrap();
     let mut buf = String::from("");
     let req = String::from(
         "\
